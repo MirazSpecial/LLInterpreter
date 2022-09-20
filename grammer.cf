@@ -1,0 +1,47 @@
+entrypoints Expr ;
+
+-- Operations -------------------------------
+
+OpAdd.      ArOp ::= "+" ;
+OpSub.      ArOp ::= "-" ;
+OpMul.      ArOp ::= "*" ;
+OpDiv.      ArOp ::= "//" ;
+
+OpEq.       CompOp ::= "==" ;
+OpNeq.      CompOp ::= "!=" ;
+OpGr.       CompOp ::= ">" ;
+OpGeq.      CompOp ::= ">=" ;
+OpLe.       CompOp ::= "<" ;
+OpLeq.      CompOp ::= "<=" ;
+
+OpAnd.      BoolOp ::= "and" ;
+OpOr.       BoolOp ::= "or" ;
+
+-- Expressions ---------------------------------------------
+
+ELitInt.    Expr ::= Integer ;
+ELitTrue.   Expr ::= "true" ;
+ELitFalse.  Expr ::= "false" ;
+
+EList.      Expr ::= "[" [Expr] "]" ;
+EListHead.  Expr ::= "head" Expr ;
+EListTail.  Expr ::= "tail" Expr ;
+EListEmpty. Expr ::= "empty" Expr ;
+
+EArOp.      Expr ::= ArOp Expr Expr ;
+ECompOp.    Expr ::= CompOp Expr Expr ;
+EBoolOp.    Expr ::= BoolOp Expr Expr ;
+
+EAnonFun.   Expr ::= "\\" Ident [Ident] "->" Expr ;
+EApp.       Expr ::= Ident "args" [Expr] "endargs" ;
+
+EIf.        Expr ::= "if" Expr "then" Expr "else" Expr "endif" ;
+EVar.       Expr ::= Ident ;
+ELet.       Expr ::= "let" Ident [Ident] "=" Expr "in" Expr "endlet"; 
+
+separator Expr "," ;
+separator Ident "" ;
+
+-- Comments ---------------------------------------------
+
+comment    "--" ;

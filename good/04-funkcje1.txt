@@ -1,0 +1,11 @@
+let 
+    f n =
+        if > 2 n 
+            then 1
+            else + 
+                f args - n 1 endargs 
+                f args - n 2 endargs
+        endif
+    in 
+        f args 6 endargs 
+endlet

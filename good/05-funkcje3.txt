@@ -1,0 +1,7 @@
+let 
+    f = \ x y -> + x y
+    in let 
+        g = f args 2 endargs 
+        in g args 5 endargs 
+    endlet
+endlet
